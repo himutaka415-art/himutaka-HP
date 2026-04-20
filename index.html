@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>歌う・話す・演じる人のための専門ケア | 声の専門治療院</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Noto+Sans+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  /* ══ 全体カラー定義（クリーム統一） ══ */
+  :root {
+    --cream-light: #fffdf9;   /* 最も明るいクリーム */
+    --cream:       #f5ede0;   /* 標準クリーム */
+    --cream-mid:   #ede3d4;   /* やや濃いクリーム */
+    --cream-deep:  #e2d4bf;   /* セクション区切り用 */
+    --ink:         #2d2218;   /* 本文テキスト */
+    --muted:       #5a4e42;   /* 補足テキスト */
+    --gold:        #9a7228;   /* ゴールドアクセント */
+    --gold-light:  #c49a50;   /* ゴールド薄 */
+    --line:        rgba(154,114,40,0.18); /* ボーダー */
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: 18px;
+  }
+
+  body {
+    background: var(--cream-light);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    line-height: 1.9;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 39px,
+      rgba(154,114,40,0.04) 39px, rgba(154,114,40,0.04) 40px
+    );
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ══ HERO ══ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--cream-light) 0%, var(--cream) 100%);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-bg-char {
+    position: absolute;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 50vw;
+    color: rgba(154,114,40,0.06);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    margin-bottom: 28px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+
+  .hero-title em {
+    display: block;
+    font-style: normal;
+    color: var(--gold);
+    font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  .hero-statement {
+    max-width: 600px;
+    margin: 36px auto 0;
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 2;
+    letter-spacing: 0.06em;
+    animation: fadeUp 0.9s 0.2s ease both;
+    position: relative;
+    padding: 24px 0;
+  }
+
+  .hero-statement::before,
+  .hero-statement::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto;
+  }
+
+  .hero-statement::before { margin-bottom: 20px; }
+  .hero-statement::after { margin-top: 20px; }
+
+  .hero-copy {
+    max-width: 520px;
+    margin: 16px auto 0;
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 2;
+    animation: fadeUp 0.9s 0.3s ease both;
+  }
+
+  .hero-badges {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 36px;
+    animation: fadeUp 0.9s 0.4s ease both;
+  }
+
+  .badge {
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    background: var(--cream-light);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    padding: 6px 18px;
+    font-family: 'Shippori Mincho', serif;
+  }
+
+  .hero-arrow {
+    margin-top: 60px;
+    animation: bounce 2s infinite;
+    color: var(--gold);
+    font-size: 1.4rem;
+  }
+
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* ══ SYMPTOM SECTION ══ */
+  .symptom-section {
+    background: linear-gradient(160deg, var(--cream) 0%, var(--cream-mid) 100%);
+    color: var(--ink);
+    padding: 100px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .symptom-section::before {
+    content: '声';
+    position: absolute;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 35vw;
+    color: rgba(154,114,40,0.06);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+  }
+
+  .symptom-section .sec-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    font-size: 0.8rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .symptom-section h2 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .symptom-section .lead {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .symptom-sub {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 48px;
+    letter-spacing: 0.08em;
+  }
+
+  .symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .symptom-item {
+    background: var(--cream-light);
+    border: 1px solid var(--line);
+    padding: 24px 20px;
+    text-align: left;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+
+  .symptom-item:hover {
+    box-shadow: 0 4px 20px rgba(154,114,40,0.1);
+    transform: translateY(-2px);
+  }
+
+  .symptom-icon {
+    display: block;
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+
+  .symptom-icon svg {
+    display: block;
+  }
+
+  .symptom-text {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  /* ══ SYMPTOM SECTION - PLUS VARIANT ══ */
+  .symptom-section-plus {
+    background: linear-gradient(160deg, var(--cream-light) 0%, var(--cream) 100%);
+    border-top: none;
+  }
+
+  /* ══ BODY CARE ══ */
+  .body-care-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    max-width: 680px;
+    margin: 0 auto 32px;
+  }
+
+  .body-care-item {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    padding: 20px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+
+  .body-care-item:hover {
+    box-shadow: 0 4px 20px rgba(154,114,40,0.1);
+    transform: translateY(-2px);
+  }
+
+  .body-care-note {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 16px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ══ SECTION WRAPPER ══ */
+  .section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 90px 40px;
+    background: var(--cream-light);
+  }
+
+  .section-alt {
+    background: linear-gradient(160deg, var(--cream) 0%, var(--cream-mid) 100%);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-alt .section {
+    background: transparent;
+  }
+
+  .sec-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .sec-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  .sec-lead {
+    font-size: 0.88rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 2;
+    margin-bottom: 52px;
+  }
+
+  .gold-rule {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 20px 0 48px;
+  }
+
+  /* ══ WHY CARDS ══ */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .why-card {
+    border: 1px solid var(--line);
+    background: var(--cream-light);
+    padding: 32px 28px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .why-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(154,114,40,0.1);
+  }
+
+  .why-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .why-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+
+  .why-body {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.95;
+  }
+
+  /* ══ TREATMENT MENU ══ */
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .menu-item {
+    background: var(--cream-light);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    transition: background 0.25s;
+  }
+
+  .menu-item:hover { background: var(--cream); }
+
+  .menu-icon-wrap {
+    background: var(--cream);
+    border-right: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    min-height: 120px;
+    transition: background 0.25s;
+  }
+
+  .menu-item:hover .menu-icon-wrap { background: var(--cream-mid); }
+
+  .menu-body { padding: 28px 32px; }
+
+  .menu-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+
+  .menu-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+
+  .menu-desc {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.95;
+  }
+
+  /* ══ FLOW ══ */
+  .flow-wrap { position: relative; }
+
+  .flow-wrap::before {
+    content: '';
+    position: absolute;
+    left: 28px; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  .flow-step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+    align-items: start;
+  }
+
+  .flow-dot {
+    width: 56px; height: 56px;
+    border: 1px solid var(--gold);
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .flow-content { padding-top: 6px; }
+
+  .flow-time {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    background: var(--cream);
+    font-size: 0.68rem;
+    padding: 2px 12px;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .flow-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .flow-desc {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.95;
+  }
+
+  /* ══ FAQ ══ */
+  .faq-list {
+    border-top: 1px solid var(--line);
+  }
+
+  .faq-item { border-bottom: 1px solid var(--line); }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 22px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    gap: 16px;
+    text-align: left;
+  }
+
+  .faq-q-text {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .faq-q-text::before {
+    content: 'Q. ';
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-right: 6px;
+  }
+
+  .faq-icon {
+    font-size: 1.2rem;
+    color: var(--gold);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  .faq-a {
+    display: none;
+    padding: 0 4px 24px 20px;
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 2;
+    border-left: 2px solid var(--gold);
+    margin-bottom: 8px;
+    background: var(--cream);
+  }
+
+  .faq-item.open .faq-a { display: block; }
+
+  /* ══ CTA ══ */
+  .cta-section {
+    background: linear-gradient(160deg, var(--cream) 0%, var(--cream-mid) 100%);
+    color: var(--ink);
+    text-align: center;
+    padding: 100px 40px;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+  }
+
+  .cta-section::before {
+    content: '治';
+    position: absolute;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 40vw;
+    color: rgba(154,114,40,0.05);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+  }
+
+  .cta-section h2 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+
+  .cta-section p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 2;
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    background: var(--cream-light);
+    padding: 16px 48px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+    cursor: pointer;
+  }
+
+  .cta-btn:hover {
+    background: var(--gold);
+    color: var(--cream-light);
+  }
+
+  /* ══ FOOTER ══ */
+  footer {
+    text-align: center;
+    padding: 48px 40px;
+    background: var(--cream-deep);
+    border-top: 1px solid var(--line);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+  }
+
+  /* ══ ANIMATIONS ══ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ══ TABLET ══ */
+  @media (max-width: 768px) {
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .symptom-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ══ MOBILE ══ */
+  @media (max-width: 600px) {
+    html { font-size: 17px; }
+    .hero { padding: 60px 20px; min-height: 100svh; }
+    .hero-bg-char { font-size: 85vw; }
+    .hero-label { font-size: 0.7rem; letter-spacing: 0.15em; margin-bottom: 14px; }
+    .hero-title { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+    .hero-title em { font-size: clamp(0.9rem, 4.5vw, 1.2rem); margin-top: 8px; }
+    .hero-copy { font-size: 0.83rem; margin-top: 12px; }
+    .hero-statement { font-size: clamp(0.92rem, 4vw, 1.1rem); padding: 18px 0; }
+    .hero-badges { gap: 8px; margin-top: 20px; }
+    .badge { font-size: 0.68rem; padding: 5px 12px; }
+    .hero-arrow { margin-top: 32px; }
+
+    .symptom-section { padding: 60px 20px; }
+    .symptom-section h2 { font-size: clamp(1.3rem, 6vw, 1.8rem); }
+    .symptom-grid { grid-template-columns: 1fr; }
+    .symptom-item { padding: 20px 18px; }
+
+    .section { padding: 52px 20px; }
+    .sec-title { font-size: clamp(1.3rem, 6vw, 1.9rem); }
+    .sec-lead { font-size: 0.83rem; margin-bottom: 36px; }
+    .gold-rule { margin: 14px 0 32px; }
+
+    .why-grid { grid-template-columns: 1fr; gap: 12px; }
+    .why-card { padding: 24px 20px; }
+
+    .menu-item { grid-template-columns: 52px 1fr; }
+    .menu-icon-wrap { font-size: 1.3rem; min-height: 90px; }
+    .menu-body { padding: 20px 16px; }
+    .menu-name { font-size: 0.95rem; }
+    .menu-desc { font-size: 0.8rem; }
+
+    .flow-wrap::before { left: 22px; }
+    .flow-step { grid-template-columns: 44px 1fr; gap: 16px; margin-bottom: 28px; }
+    .flow-dot { width: 44px; height: 44px; font-size: 1.1rem; }
+    .flow-title { font-size: 0.95rem; }
+    .flow-desc { font-size: 0.8rem; }
+
+    .faq-q { padding: 18px 4px; }
+    .faq-q-text { font-size: 0.88rem; }
+    .faq-a { font-size: 0.8rem; }
+
+    .body-care-grid { grid-template-columns: 1fr 1fr; }
+
+    .cta-section { padding: 64px 24px; }
+    .cta-section h2 { font-size: clamp(1.4rem, 6vw, 2rem); }
+    .cta-btn { padding: 14px 32px; font-size: 0.85rem; }
+
+    footer { padding: 36px 20px; font-size: 0.75rem; }
+  }
+
+  @media print {
+    body::before, .hero-bg-char, .symptom-section::before, .cta-section::before { display: none; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .hero { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg-char">歌</div>
+  <p class="hero-label">For Singers, Speakers & Performers</p>
+  <h1 class="hero-title">
+    あなたの声を、<br>もっと自由に。
+    <em>歌う・話す・演じる人のための専門ケア</em>
+  </h1>
+  <p class="hero-statement">
+    鍼灸を中心に、ストレッチ・手技療法を組み合わせた<br>全身ケアで、あなたの声の可能性を広げます。
+  </p>
+  <p class="hero-copy">
+    声は、全身を使った唯一の楽器です。<br>
+    声の不調を回復させたい方にも、今の声をさらに引き上げたい方にも。
+  </p>
+  <div class="hero-badges">
+    <span class="badge">鍼灸</span>
+    <span class="badge">ストレッチ・手技療法</span>
+    <span class="badge">出張施術</span>
+    <span class="badge">セルフケア指導</span>
+  </div>
+  <div class="hero-arrow">↓</div>
+</section>
+
+<!-- ══ SYMPTOMS: RECOVERY ══ -->
+<section class="symptom-section">
+  <p class="sec-label">Recovery Care</p>
+  <h2>声の不調を、元に戻したい方へ。</h2>
+  <p class="lead">「これくらい大丈夫」と我慢していませんか？</p>
+  <p class="symptom-sub">まずは今ある悩みを解消し、本来の声を取り戻すためのケアです。</p>
+  <div class="symptom-grid">
+    <div class="symptom-item">
+      <span class="symptom-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4"/><circle cx="12" cy="12" r="1.5" fill="#9a7228"/></svg>
+      </span>
+      <p class="symptom-text">声がかすれやすくなった、またはすぐに枯れてしまう</p>
+    </div>
+    <div class="symptom-item">
+      <span class="symptom-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      </span>
+      <p class="symptom-text">高音が出にくい、声が震える・ひっくり返る</p>
+    </div>
+    <div class="symptom-item">
+      <span class="symptom-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M12 2a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/></svg>
+      </span>
+      <p class="symptom-text">ブレスが続かない、声の「支え」が弱くなった</p>
+    </div>
+    <div class="symptom-item">
+      <span class="symptom-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M12 2a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/><line x1="4" y1="4" x2="6" y2="7"/><line x1="20" y1="4" x2="18" y2="7"/></svg>
+      </span>
+      <p class="symptom-text">喉の違和感・異物感・後鼻漏が慢性的に続く</p>
+    </div>
+    <div class="symptom-item">
+      <span class="symptom-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      </span>
+      <p class="symptom-text">歌った後の疲弊感がひどく、回復に時間がかかる</p>
+    </div>
+    <div class="symptom-item">
+      <span class="symptom-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </span>
+      <p class="symptom-text">首・肩・顎がいつもこっていて、声の通りが悪い</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SYMPTOMS: PERFORMANCE UP ══ -->
+<section class="symptom-section symptom-section-plus">
+  <p class="sec-label">Performance Up</p>
+  <h2>今の声を、さらに引き上げたい方へ。</h2>
+  <p class="lead">不調はないけれど、もっと良くしたい。</p>
+  <p class="symptom-sub">身体の状態を整え、声のポテンシャルを最大限に引き出すためのケアです。</p>
+  <div class="symptom-grid">
+    <div class="symptom-item">
+      <span class="symptom-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </span>
+      <p class="symptom-text">声量や声の伸びをもっと出したい</p>
+    </div>
+    <div class="symptom-item">
+      <span class="symptom-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </span>
+      <p class="symptom-text">長時間のステージやレコーディングでも声を持たせたい</p>
+    </div>
+    <div class="symptom-item">
+      <span class="symptom-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </span>
+      <p class="symptom-text">本番前に身体を最高のコンディションに整えたい</p>
+    </div>
+    <div class="symptom-item">
+      <span class="symptom-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+      </span>
+      <p class="symptom-text">呼吸の質を高めて、表現の幅を広げたい</p>
+    </div>
+    <div class="symptom-item">
+      <span class="symptom-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+      </span>
+      <p class="symptom-text">日々のトレーニング効果を身体のケアで底上げしたい</p>
+    </div>
+    <div class="symptom-item">
+      <span class="symptom-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </span>
+      <p class="symptom-text">声を長く使い続けるために、身体のメンテナンスを習慣にしたい</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY ══ -->
+<div class="reveal">
+  <div class="section">
+    <span class="sec-label">Why this treatment?</span>
+    <h2 class="sec-title">声は、全身を使った唯一の楽器。</h2>
+    <div class="gold-rule"></div>
+    <p class="sec-lead">ギターもピアノも、楽器のメンテナンスは欠かせません。声も同じです。喉だけでなく、呼吸・姿勢・体幹・自律神経、すべてが声とつながっています。</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div class="why-title">喉の緊張は首・顎から来る</div>
+        <div class="why-body">声帯周囲の筋肉は、首・顎・後頭部の筋肉と連動しています。肩こりや顎の食いしばりが、声の自由度を奪っている場合があります。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div class="why-title">呼吸が浅いと声は出ない</div>
+        <div class="why-body">横隔膜・肋間筋・お腹の筋肉が「声の土台」。これらが疲弊すると、どれだけ練習しても声量・安定感が戻りません。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div class="why-title">鍼灸は「気血の流れ」を整える</div>
+        <div class="why-body">東洋医学では、慢性的な声の疲れは「気血の不足・停滞」と考えます。鍼灸で体の内側から回復力を高め、声の持続力を取り戻します。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <div class="why-title">手技・ストレッチは鍼灸の効果を高める</div>
+        <div class="why-body">鍼灸の前後に手技やストレッチを組み合わせることで、筋肉の緊張がほぐれ鍼の効果がより深く届きます。施術後の体の変化が長続きしやすくなります。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ VISIT ══ -->
+<div class="section-alt reveal">
+  <div class="section">
+    <span class="sec-label">Home & Location Visit</span>
+    <h2 class="sec-title">出張施術、承ります。</h2>
+    <div class="gold-rule"></div>
+    <p class="sec-lead">施術はすべて出張で行っております。ご自宅やスタジオ、会場近くまで伺いますので、移動の負担なく慣れた環境でリラックスして施術を受けていただけます。</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div class="why-title">施術後すぐ休める</div>
+        <div class="why-body">鍼灸後は体がリラックスし、眠くなることがあります。自宅なら施術が終わったらそのまま横になれるので、回復効果が最大限に発揮されます。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div class="why-title">本番前後に対応できる</div>
+        <div class="why-body">ライブ・レコーディング・発表会の会場近くまで伺います。移動による体の緊張や疲れを加えることなく、最良のコンディションで臨んでいただけます。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div class="why-title">忙しい方でも続けやすい</div>
+        <div class="why-body">練習やレッスンの合間に、わざわざ治療院まで移動する時間が省けます。スケジュールの隙間に無理なくケアを続けることができます。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <div class="why-title">慣れた場所でリラックス</div>
+        <div class="why-body">見知らぬ場所では緊張して体がほぐれにくいことがあります。自分の部屋やスタジオなど、安心できる環境の方が施術の効果がより深く届きます。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">05</div>
+        <div class="why-title">自宅が難しい方はご相談を</div>
+        <div class="why-body">「自宅への来訪が難しい」という方には、ご近所のレンタルサロンや施術スペースの手配もご相談いただけます。お気軽にお声がけください。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MENU ══ -->
+<div class="reveal">
+  <div class="section">
+    <span class="sec-label">Treatment Menu</span>
+    <h2 class="sec-title">施術メニュー</h2>
+    <div class="gold-rule"></div>
+    <div class="menu-list">
+      <div class="menu-item">
+        <div class="menu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M12 2a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/></svg>
+        </div>
+        <div class="menu-body">
+          <div class="menu-name">鍼灸治療</div>
+          <div class="menu-en">Acupuncture & Moxibustion</div>
+          <div class="menu-desc">喉・首・肩まわりのツボに細い鍼を刺し、こり固まった筋肉をゆるめて血流を改善します。痛みはほとんどなく、施術後は「体が軽くなった」「喉がひらいた」と感じる方が多くいらっしゃいます。お灸は足や背中のツボをじんわり温めることで、体の内側から疲労回復と免疫力アップをサポートします。</div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2 2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
+        </div>
+        <div class="menu-body">
+          <div class="menu-name">ストレッチ・手技療法</div>
+          <div class="menu-en">Manual Therapy & Stretching</div>
+          <div class="menu-desc">鍼灸と組み合わせることで効果が深まる施術です。首の後ろ・後頭部・顎まわり・肩の奥深くの筋肉を手でていねいにほぐし、首の前側・胸・脇腹のストレッチで声が出やすい体の状態を整えます。横隔膜へのアプローチも行い、呼吸の深さを引き出します。</div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="menu-body">
+          <div class="menu-name">セルフケア指導</div>
+          <div class="menu-en">Home Care Guidance</div>
+          <div class="menu-desc">歌う前後の自分でできるケア、ウォームアップ・クールダウンの方法、日常の声の使い方・水分補給・睡眠のコツなどをお伝えします。また、ボイストレーナーや発声指導の専門家と連携することで、施術の効果をレッスンや日々の練習にもつなげていくことができます。治療院の外でも「声を守る習慣」が身につきます。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FLOW ══ -->
+<div class="section-alt reveal">
+  <div class="section">
+    <span class="sec-label">Session Flow</span>
+    <h2 class="sec-title">施術の流れ</h2>
+    <div class="gold-rule"></div>
+    <div class="flow-wrap">
+      <div class="flow-step">
+        <div class="flow-dot">1</div>
+        <div class="flow-content">
+          <span class="flow-time">約10分</span>
+          <div class="flow-title">問診・お体の状態確認</div>
+          <div class="flow-desc">最近の歌の練習や本番の状況、気になる声の症状、全身の体調（睡眠・食欲・疲れ方など）をじっくりお聞きします。お悩みをなんでも話してください。</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">2</div>
+        <div class="flow-content">
+          <span class="flow-time">約45分</span>
+          <div class="flow-title">鍼灸治療</div>
+          <div class="flow-desc">体の状態に合わせたツボに鍼を刺し、リラックスした状態で15分ほど休んでいただきます。必要に応じてお灸も行います。</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">3</div>
+        <div class="flow-content">
+          <span class="flow-time">約15分</span>
+          <div class="flow-title">ストレッチ・手技療法</div>
+          <div class="flow-desc">鍼灸の効果をさらに定着させるため、後頭部・首・顎・肩まわりの筋肉をほぐし、体のストレッチを行います。</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">4</div>
+        <div class="flow-content">
+          <span class="flow-time">約10分</span>
+          <div class="flow-title">アフターケア・ホームケア指導</div>
+          <div class="flow-desc">施術後の体の変化を確認し、自宅でできるセルフケアをお伝えします。次回までにできることを一緒に考えましょう。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BODY CARE ══ -->
+<div class="reveal">
+  <div class="section" style="text-align:center;">
+    <span class="sec-label">Body Care</span>
+    <h2 class="sec-title">声のケアだけではありません。</h2>
+    <div class="gold-rule" style="margin-left:auto;margin-right:auto;"></div>
+    <p class="sec-lead" style="margin-left:auto;margin-right:auto;">声を専門としていますが、鍼灸師・柔道整復師として、一般的な身体の不調にも対応しています。声のケアで培った全身を診る視点で、お身体の悩みもサポートいたします。</p>
+    <div class="body-care-grid">
+      <div class="body-care-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span>肩こり・首こり</span>
+      </div>
+      <div class="body-care-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        <span>腰痛・背中の張り</span>
+      </div>
+      <div class="body-care-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>頭痛・眼精疲労</span>
+      </div>
+      <div class="body-care-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <span>自律神経の乱れ・疲労</span>
+      </div>
+      <div class="body-care-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+        <span>膝・関節の痛み</span>
+      </div>
+      <div class="body-care-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9a7228" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>冷え性・むくみ</span>
+      </div>
+    </div>
+    <p class="body-care-note">※ 声のケアと合わせて受けていただくことも、ボディケアのみのご利用も可能です。</p>
+  </div>
+</div>
+
+<!-- ══ FAQ ══ -->
+<div class="reveal">
+  <div class="section">
+    <span class="sec-label">FAQ</span>
+    <h2 class="sec-title">よくあるご質問</h2>
+    <div class="gold-rule"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">鍼は痛くないですか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a">使用する鍼は髪の毛ほどの細さです。チクッとする感覚はありますが、ほとんどの方が「思ったより全然痛くなかった」とおっしゃいます。刺さった後は「ずーんとした重さ」や「じんわりした温かさ」を感じることがあり、これが効いているサインです。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">本番直前でも施術を受けられますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a">はい、受けていただけます。ただし、本番前日・当日はリラックス系の軽めの施術（ストレッチ・手技中心）をおすすめします。鍼後は体が一時的にだるく感じることがあるため、本番の2〜3日前までに強めの施術を受けておくのが理想的です。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">何回くらいで効果を感じますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a">多くの方が初回〜3回目で「喉が楽になった」「高音が出やすくなった」と感じてくださいます。ただし、慢性的な疲れや長年の癖は、継続的なケアで根本から整えていくことが大切です。まずは5〜6回を目安に続けてみてください。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">施術当日に気をつけることはありますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a">施術後は血行が良くなっているため、当日の激しい発声練習・飲酒・激しい運動はお控えください。水分をこまめにとり、できれば早めに休んでいただくと回復がより早くなります。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">耳鼻科に通っていますが、一緒に受けても大丈夫ですか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a">はい、問題ありません。上咽頭炎など耳鼻科的な治療と鍼灸・手技は併用できます。むしろ相乗効果が期待できる場合も多くあります。受診中の方は初回に必ずお伝えください。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">鍼灸・手技で対応が難しいケースはありますか？</span>
+          <span class="faq-icon">＋</span>
+        </button>
+        <div class="faq-a">声帯ポリープ・声帯結節・声帯麻痺など、器質的な病変（組織に実際の変化が起きている状態）は、鍼灸や手技だけでの改善が難しく、耳鼻咽喉科での診察・治療が必要です。また、逆流性食道炎・甲状腺疾患・悪性腫瘍なども同様です。「なかなか治らない声の不調」は、まず耳鼻科で原因を確認されることをお勧めします。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section">
+  <h2>あなたの声と、真剣に向き合います。</h2>
+  <p>声の不調の回復から、パフォーマンスの向上まで。身体のケアもお任せください。声のこと、身体のこと、どうぞお気軽にご相談ください。</p>
+</section>
+
+<footer>
+  歌う・話す・演じる人のための鍼灸・手技ケア &nbsp;／&nbsp; Voice Care Treatment
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    btn.parentElement.classList.toggle('open');
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
