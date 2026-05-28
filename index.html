@@ -1059,15 +1059,51 @@ footer {
    RESPONSIVE
 ══════════════════════════════ */
 @media (max-width: 640px) {
+  /* ゲート */
   .gate-panels { flex-direction: column; }
   .gate-divider { display: none; }
   .gate-panel:hover { flex: 1; }
   .gate-panels:has(.gate-panel:hover) .gate-panel:not(:hover) { flex: 1; }
-  .voice-states, .gen-values { grid-template-columns: 1fr; }
-  .pro-card, .gen-card { padding: 24px 18px; }
-  .pro-card-top, .gen-card-top { flex-direction: column; gap: 10px; }
+  .gate-panel-inner { padding: 0 20px; }
+  .gate-logo-title { font-size: 18px; }
+
+  /* ヒーロー */
+  .pro-hero, .gen-hero { padding: 80px 20px 60px; min-height: auto; }
+  .pro-catch, .gen-catch { font-size: 14px; }
+
+  /* セクション */
+  .pro-section, .gen-section { padding: 48px 16px; }
+
+  /* 症状カード */
+  .voice-states { grid-template-columns: 1fr; }
+  .gen-values { grid-template-columns: 1fr; }
+
+  /* コースカード */
+  .pro-card, .gen-card { padding: 22px 16px; }
+  .pro-card-top, .gen-card-top { flex-direction: column; gap: 8px; }
   .pro-card-price-block, .gen-card-price-block { text-align: left; }
-  .pro-cta, .gen-cta { padding: 40px 24px; }
+  .pro-card-name, .gen-card-name { font-size: 18px; }
+  .pro-card-price, .gen-card-price { font-size: 24px; }
+  .pro-card-copy, .gen-card-copy { font-size: 14px; }
+
+  /* 法人カード */
+  .pro-section [style*="justify-content:space-between"] { flex-direction: column; gap: 10px; }
+
+  /* CTA */
+  .pro-cta, .gen-cta { padding: 36px 20px; }
+  .pro-cta-title, .gen-cta-title { font-size: 24px; }
+
+  /* Instagram block */
+  .pro-section [style*="display:flex; align-items:center; justify-content:space-between"] {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* 差別化グリッド */
+  .gen-section [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+
+  /* 部位カードグリッド */
+  .gen-section [style*="minmax(340px"] { grid-template-columns: 1fr !important; }
 }
 </style>
 </head>
@@ -1200,7 +1236,7 @@ footer {
         <p class="pro-card-copy">
           鍼灸＋ストレッチ＋手技療法を組み合わせた<strong>最深アプローチ</strong>。<br>
           本番前日・当日の仕上げに。ツアーやシーズン中の根本ケアに。<br>
-          声帯周囲の筋群・後頭下筋群・横隔膜、全てにアプローチします。
+          声帯周囲・頸・後頭部・呼吸、<strong>声に関わる全てにアプローチ</strong>します。
         </p>
         <div class="pro-tags">
           <span class="pro-tag">本番前日・当日</span>
